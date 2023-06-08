@@ -7,6 +7,7 @@ from pytube.exceptions import AgeRestrictedError
 from customtkinter import filedialog
 from CTkMessagebox import CTkMessagebox
 
+
 class Controller:
     def __init__(self, Model:Video_Model, View: Youtube_interface) -> None:
         # created the Model and View in the Controller class.
@@ -68,10 +69,9 @@ class Controller:
 
             ## -- if No errors downloading can proccessed ..
             else:
-                self.view.stream_details.insert(index = "0.0",text="\n\nStream Title: {0}\nStream Type: {1}\nQuality: {2}\nFile-size: {3} Bytes\nSave location: {4}".format(video._title, video_type, video_quality,filter.filesize, saved_location))
+                self.view.stream_details.insert(index = "0.0",text="\n\nStream Title: {0}\nStream Type: {1}\nQuality: {2}\nSave location: {3}\nFile-Size: {4} MB".format(video._title, video_type, video_quality,saved_location, filter.filesize_mb))
                 filter.download(saved_location)
                 CTkMessagebox(title="Success", message="Download is Successfully Done!", icon="check")
 
-
-    def run_app(self): #.// it runs the instances of the view class
+    def run_app(self): #.// it runs the instanes of the view class
         self.view.mainloop()

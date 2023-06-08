@@ -3,13 +3,14 @@
 from customtkinter import *
 from PIL import Image
 from .model import Video_Model
+import threading
 
 class Youtube_interface(CTk):
     def __init__(self, model:Video_Model):
         CTk.__init__(self)
 
         self.title('Tube Save')
-        self.iconbitmap(r"packages\images\app-icon.ico")
+        self.iconbitmap(r"G:\Youtube_downloader\packages\images\Youtube-icon.ico")
         self.geometry("650x650") # it specify the size of the interface
         self.resizable(False, False) # show that if the window is resizable
 
@@ -17,7 +18,7 @@ class Youtube_interface(CTk):
         self.video = model
 
         # sets the theme of the interface to dark mode
-        set_appearance_mode("light")
+        set_appearance_mode("dark")
 
         # sets the background image of the interface
         bg_image = CTkImage(Image.open(r'packages\images\background_image.jfif'), size=(1500, 1000))
