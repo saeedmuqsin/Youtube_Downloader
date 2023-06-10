@@ -9,7 +9,7 @@ class Youtube_interface(CTk):
         CTk.__init__(self)
 
         self.title('Tube Save')
-        self.iconbitmap(r"packages\images\app-icon.ico")
+        self.iconbitmap(r"G:\Youtube_downloader\packages\images\Youtube-icon.ico")
         self.geometry("650x650") # it specify the size of the interface
         self.resizable(False, False) # show that if the window is resizable
 
@@ -17,7 +17,7 @@ class Youtube_interface(CTk):
         self.video = model
 
         # sets the theme of the interface to dark mode
-        set_appearance_mode("light")
+        set_appearance_mode("dark")
 
         # sets the background image of the interface
         bg_image = CTkImage(Image.open(r'packages\images\background_image.jfif'), size=(1500, 1000))
@@ -91,5 +91,7 @@ class Youtube_interface(CTk):
         self.cancel_button.bind("<Button-1>", callback)
 
     # --> starts to download the video
-    def StartDownload(self, callback):
-        self.download_button.bind("<Button-1>", callback)
+
+    def StartDownload(self, callback:callable):
+        self.download_button.bind("<Button-1>",callback)
+
