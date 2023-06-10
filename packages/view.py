@@ -3,7 +3,6 @@
 from customtkinter import *
 from PIL import Image
 from .model import Video_Model
-import threading
 
 class Youtube_interface(CTk):
     def __init__(self, model:Video_Model):
@@ -92,5 +91,7 @@ class Youtube_interface(CTk):
         self.cancel_button.bind("<Button-1>", callback)
 
     # --> starts to download the video
-    def StartDownload(self, callback):
-        self.download_button.bind("<Button-1>", callback)
+
+    def StartDownload(self, callback:callable):
+        self.download_button.bind("<Button-1>",callback)
+

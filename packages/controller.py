@@ -53,7 +53,7 @@ class Controller:
             # --> tracking errors when trying to download..
             try:
                 video = YouTube(video_url)
-                streams = video.streams
+                streams = video.streams.filter(file_extension="mp4")
 
                 if video_type == "Audio":
                     filter = streams.get_audio_only(subtype="mp4")
@@ -67,11 +67,7 @@ class Controller:
             except URLError:
                 CTkMessagebox(title="Error Occured!", message="Please Check URL or It could be a connection problem.", icon="cancel")
 
-            ## -- if No errors downloading can proccessed ..
             else:
                 self.view.stream_details.insert(index = "0.0",text="\n\nStream Title: {0}\nStream Type: {1}\nQuality: {2}\nSave location: {3}\nFile-Size: {4} MB".format(video._title, video_type, video_quality,saved_location, filter.filesize_mb))
                 filter.download(saved_location)
                 CTkMessagebox(title="Success", message="Download is Successfully Done!", icon="check")
-
-    def run_app(self): #.// it runs the instanes of the view class
-        self.view.mainloop()
