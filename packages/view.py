@@ -9,7 +9,7 @@ class Youtube_interface(CTk):
         CTk.__init__(self)
 
         self.title('Tube Save')
-        self.iconbitmap(r"G:\Youtube_downloader\packages\images\Youtube-icon.ico")
+        self.iconbitmap(r"packages\images\Youtube-icon.ico")
         self.geometry("650x650") # it specify the size of the interface
         self.resizable(False, False) # show that if the window is resizable
 
@@ -28,7 +28,7 @@ class Youtube_interface(CTk):
         main_container.place(rely=0.5, relx=0.5, anchor= CENTER)
 
         #// -- >  video url entry widget
-        CTkLabel(main_container,text='Video URL :', font=CTkFont(size=15)).place(x=30, y=30)
+        CTkLabel(main_container,text='Stream URL :', font=CTkFont(size=15)).place(x=30, y=30)
         self.video.Link = StringVar()
         video_url_entry = CTkEntry(main_container,width=400,height=40, placeholder_text="Type the video URL here.", textvariable=self.video.Link).place(x=120,y=25)
 
@@ -78,20 +78,19 @@ class Youtube_interface(CTk):
         
 
 
-    ## ==> pastes Copied VIDEO URL in the URL Entry
+    # == > function that pastes the URL in the stream entry
     def Paste_func(self, callback:callable):
         self.pasteBtn.bind("<Button-1>", callback)
 
-    # == > Selecting directory where is video to be saved
+    # == > function retrieves the directory selected by the user where streams is going be saved..
     def SelectDirectory(self, callback:callable):
         self.directory_btn.bind("<Button-1>", callback)
 
-    # -- > Cancels the whole window
+    # == > function that cancel or closes the windows 
     def Cancel_window(self, callback):
         self.cancel_button.bind("<Button-1>", callback)
 
-    # --> starts to download the video
-
+    # == > function called to start downloading youtube stream
     def StartDownload(self, callback:callable):
         self.download_button.bind("<Button-1>",callback)
 
